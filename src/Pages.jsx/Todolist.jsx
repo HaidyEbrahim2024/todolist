@@ -58,88 +58,89 @@ export default function Todolist() {
   }
 
   return (
-    <div className="   Todolist bg-primary-subtle ">
-    <div className="container col-6 table-danger">
-      <h1 style={{ textAlign: "center", color: "black", padding: "15px"  }}>
-        To Do List
-      </h1>
-      <form onSubmit={Addnewtaskarr}>
-        <input
-          onChange={(e) => setNewtask(e.target.value)}
-          ref={tName}
-          className="form-control"
-          type="text"
-          placeholder="Add New Task"
-          value={Newtask}
-          style={{ marginBottom: "12px" }}
-        />
-        <input
-          onChange={(e) => setNewdesc(e.target.value)}
-          ref={tdesc}
-          className="form-control"
-          type="text"
-          placeholder="Add New Desc"
-          value={Newdesc}
-          style={{ marginBottom: "12px" }}
-        /> 
-        <button
-          className="col-12 bg-info-subtle"
-          style={{ marginBottom: "12px", padding: "5px 15px", border:"none" ,fontSize:"18px" }}
-        >
-          Add
-        </button>
-      </form>
-      <table className="table table-bordered" style={{ marginBottom: "12px" }}>
-        <thead>
-          <tr>
-            <th> -</th>
-            <th> Task Name</th>
-            <th> Task desc</th>
-            <th>Remove</th>
-            <th>update</th>
-          </tr>
-        </thead>
-        <tbody>
-          {tasks.map((el, index) => (
-            <tr key={el.id}>
-              <th> {index + 1}</th>
-              <th
-                ref={index === taskToEdit ? editedTaskName : null}
-                contentEditable={index === taskToEdit}
-              >
-                {el.name}
-              </th>
-              <th
-                ref={index === taskToEdit ? editedTaskDesc : null}
-                contentEditable={index === taskToEdit}
-              >
-                {el.desc}
-              </th>
-              <th>
+    <div className="Todolist bg-primary-subtle">
+        <div className="container">
+            <h1 style={{ textAlign: "center", color: "black", padding: "15px" }}>
+                To Do List
+            </h1>
+            <form onSubmit={Addnewtaskarr}>
+                <input
+                    onChange={(e) => setNewtask(e.target.value)}
+                    ref={tName}
+                    className="form-control"
+                    type="text"
+                    placeholder="Add New Task"
+                    value={Newtask}
+                    style={{ marginBottom: "12px" }}
+                />
+                <input
+                    onChange={(e) => setNewdesc(e.target.value)}
+                    ref={tdesc}
+                    className="form-control"
+                    type="text"
+                    placeholder="Add New Desc"
+                    value={Newdesc}
+                    style={{ marginBottom: "12px" }}
+                />
                 <button
-                  className="btn btn-danger"
-                  onClick={() => RemoveTasks(el.id)}
+                    className="bg-info-subtle"
+                    style={{ marginBottom: "12px", padding: "5px 15px", border: "none", fontSize: "18px" }}
                 >
-                  Remove
+                    Add
                 </button>
-              </th>
-              <th>
-                <button
-                  className="btn btn-primary"
-                  onClick={() =>
-                    index === taskToEdit
-                      ? saveTaskToUpdat(el.id)
-                      : settaskToEdit(index)
-                  }
-                >
-                  {index === taskToEdit ? "save" : "Edit"}
-                </button>
-              </th>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+            </form>
+            <table className="table table-bordered" style={{ marginBottom: "12px" }}>
+                <thead>
+                    <tr>
+                        <th>-</th>
+                        <th>Task Name</th>
+                        <th>Task Desc</th>
+                        <th>Remove</th>
+                        <th>Update</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {tasks.map((el, index) => (
+                        <tr key={el.id}>
+                            <td>{index + 1}</td>
+                            <td
+                                ref={index === taskToEdit ? editedTaskName : null}
+                                contentEditable={index === taskToEdit}
+                            >
+                                {el.name}
+                            </td>
+                            <td
+                                ref={index === taskToEdit ? editedTaskDesc : null}
+                                contentEditable={index === taskToEdit}
+                            >
+                                {el.desc}
+                            </td>
+                            <td>
+                                <button
+                                    className="btn btn-danger"
+                                    onClick={() => RemoveTasks(el.id)}
+                                >
+                                    Remove
+                                </button>
+                            </td>
+                            <td>
+                                <button
+                                    className="btn btn-primary"
+                                    onClick={() =>
+                                        index === taskToEdit
+                                            ? saveTaskToUpdat(el.id)
+                                            : settaskToEdit(index)
+                                    }
+                                >
+                                    {index === taskToEdit ? "Save" : "Edit"}
+                                </button>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div>
     </div>
-    </div>
-  );
+);
+
 }
