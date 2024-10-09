@@ -89,58 +89,61 @@ export default function Todolist() {
                     Add
                 </button>
             </form>
-            <table className="table table-bordered" style={{ marginBottom: "12px" }}>
-                <thead>
-                    <tr>
-                        <th>-</th>
-                        <th>Task Name</th>
-                        <th>Task Desc</th>
-                        <th>Remove</th>
-                        <th>Update</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {tasks.map((el, index) => (
-                        <tr key={el.id}>
-                            <td>{index + 1}</td>
-                            <td
-                                ref={index === taskToEdit ? editedTaskName : null}
-                                contentEditable={index === taskToEdit}
-                            >
-                                {el.name}
-                            </td>
-                            <td
-                                ref={index === taskToEdit ? editedTaskDesc : null}
-                                contentEditable={index === taskToEdit}
-                            >
-                                {el.desc}
-                            </td>
-                            <td>
-                                <button
-                                    className="btn btn-danger"
-                                    onClick={() => RemoveTasks(el.id)}
-                                >
-                                    Remove
-                                </button>
-                            </td>
-                            <td>
-                                <button
-                                    className="btn btn-primary"
-                                    onClick={() =>
-                                        index === taskToEdit
-                                            ? saveTaskToUpdat(el.id)
-                                            : settaskToEdit(index)
-                                    }
-                                >
-                                    {index === taskToEdit ? "Save" : "Edit"}
-                                </button>
-                            </td>
+            <div className="table-container">
+                <table className="table table-bordered" style={{ marginBottom: "12px" }}>
+                    <thead>
+                        <tr>
+                            <th>-</th>
+                            <th>Task Name</th>
+                            <th>Task Desc</th>
+                            <th>Remove</th>
+                            <th>Update</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {tasks.map((el, index) => (
+                            <tr key={el.id}>
+                                <td>{index + 1}</td>
+                                <td
+                                    ref={index === taskToEdit ? editedTaskName : null}
+                                    contentEditable={index === taskToEdit}
+                                >
+                                    {el.name}
+                                </td>
+                                <td
+                                    ref={index === taskToEdit ? editedTaskDesc : null}
+                                    contentEditable={index === taskToEdit}
+                                >
+                                    {el.desc}
+                                </td>
+                                <td>
+                                    <button
+                                        className="btn btn-danger"
+                                        onClick={() => RemoveTasks(el.id)}
+                                    >
+                                        Remove
+                                    </button>
+                                </td>
+                                <td>
+                                    <button
+                                        className="btn btn-primary"
+                                        onClick={() =>
+                                            index === taskToEdit
+                                                ? saveTaskToUpdat(el.id)
+                                                : settaskToEdit(index)
+                                        }
+                                    >
+                                        {index === taskToEdit ? "Save" : "Edit"}
+                                    </button>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 );
+
 
 }
