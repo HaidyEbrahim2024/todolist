@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-
+import "./todolist.css"
 export default function Todolist() {
   const [tasks, settasks] = useState([]);
   const [Newtask, setNewtask] = useState("");
@@ -58,8 +58,9 @@ export default function Todolist() {
   }
 
   return (
-    <div className="col-12 Todolist ">
-      <h1 style={{ textAlign: "center", color: "blue", padding: "15px" }}>
+    <div className="   Todolist bg-primary-subtle ">
+    <div className="container col-6 table-danger">
+      <h1 style={{ textAlign: "center", color: "black", padding: "15px"  }}>
         To Do List
       </h1>
       <form onSubmit={Addnewtaskarr}>
@@ -80,10 +81,10 @@ export default function Todolist() {
           placeholder="Add New Desc"
           value={Newdesc}
           style={{ marginBottom: "12px" }}
-        />
+        /> 
         <button
-          className="btn btn-success"
-          style={{ marginBottom: "12px", padding: "5px 15px" }}
+          className="col-12 bg-info-subtle"
+          style={{ marginBottom: "12px", padding: "5px 15px", border:"none" ,fontSize:"18px" }}
         >
           Add
         </button>
@@ -138,6 +139,7 @@ export default function Todolist() {
           ))}
         </tbody>
       </table>
+    </div>
     </div>
   );
 }
